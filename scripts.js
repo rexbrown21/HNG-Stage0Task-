@@ -1,59 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to handle form submission
-    function handleFormSubmission(event) {
-        event.preventDefault(); // Prevent default form submission
-        
-        // Retrieve form data
-        const formData = new FormData(event.target);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Example: Log form data to console
-        console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+    // Smooth scrolling for anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
 
-        // You can add further logic here, such as sending the form data to a server using fetch API
-        // Example: Send form data to a server
-        /*
-        fetch('https://example.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Optionally, display a success message to the user
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Optionally, display an error message to the user
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50, // Adjust offset as needed
+                    behavior: 'smooth'
+                });
+            }
         });
-        */
+    });
 
-        // Reset the form after submission (optional)
-        event.target.reset();
-    }
-
-    // Add form submission event listener
+    // Form submission handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmission);
-    }
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    // Function to toggle visibility of an element
-    function toggleElementVisibility(elementId) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.classList.toggle('hidden');
-        }
-    }
+            // Retrieve form data
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const username = formData.get('username');
+            const email = formData.get('email');
 
-    // Example: Toggle visibility of content on button click
-    const toggleButton = document.getElementById('toggleButton');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            toggleElementVisibility('toggleContent');
+            // Example: Display form data
+            console.log(`Name: ${name}, Username: ${username}, Email: ${email}`);
+
+            // Optionally display the form data on the page
+            const formDataDisplay = document.createElement('div');
+            formDataDisplay.innerHTML = `<p>Name: ${name}</p><p>Username: ${username}</p><p>Email: ${email}</p>`;
+            contactForm.appendChild(formDataDisplay);
         });
     }
 });
+
 
