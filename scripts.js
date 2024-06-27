@@ -1,43 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for anchor links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+// JavaScript code for handling form submission or any other interactive functionality
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+// Example: Handle form submission
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50, // Adjust offset as needed
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    // Example: Retrieve form values (you may customize this based on your form fields)
+    const name = document.getElementById('name').value;
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
 
-    // Form submission handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Retrieve form data
-            const formData = new FormData(event.target);
-            const name = formData.get('name');
-            const username = formData.get('username');
-            const email = formData.get('email');
-
-            // Example: Display form data
-            console.log(`Name: ${name}, Username: ${username}, Email: ${email}`);
-
-            // Optionally display the form data on the page
-            const formDataDisplay = document.createElement('div');
-            formDataDisplay.innerHTML = `<p>Name: ${name}</p><p>Username: ${username}</p><p>Email: ${email}</p>`;
-            contactForm.appendChild(formDataDisplay);
-        });
-    }
+    // Example: Display form values (you may customize this based on your needs)
+    alert(`Submitted Form:
+    Name: ${name}
+    Username: ${username}
+    Email: ${email}`);
 });
+
 
 
