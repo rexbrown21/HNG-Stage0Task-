@@ -62,8 +62,18 @@ nav ul li a:hover {
 
 /* Sections */
 .section {
-    padding-top: 80px; /* Adjusted padding top for sections to accommodate fixed header */
+    padding: 80px 0;
     text-align: center;
+}
+
+.banner {
+    background-color: #333;
+    color: #fff;
+}
+
+.banner h2 {
+    font-size: 3em; /* Adjusted font size for the welcome text */
+    margin-bottom: 20px;
 }
 
 .section h2 {
@@ -143,6 +153,7 @@ footer {
 footer p {
     font-size: 0.9em;
 }
+
 
 
 
