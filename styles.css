@@ -38,6 +38,16 @@ p {
     font-size: 1.1em;
 }
 
+a {
+    color: #0d47a1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1565c0;
+}
+
 button {
     background-color: #0d47a1;
     color: white;
@@ -76,6 +86,7 @@ button:hover {
         padding: 20px;
     }
 }
+
 
 
 
